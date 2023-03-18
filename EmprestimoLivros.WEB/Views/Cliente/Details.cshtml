@@ -1,0 +1,80 @@
+﻿@model EmprestimoLivros.DATA.Models.Cliente
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalhes do cliente</h1>
+
+<div>
+    <h4>Confira os detalhes abaixo</h4>
+    <hr />
+    <div>
+        <a asp-action="Edit" class="btn btn-success" asp-route-id="@Model.Id">Alterar</a>
+        <a class="btn btn-primary" asp-action="Index">Voltar</a>
+    </div>
+    <br />
+    <div class="card">
+        <div class="card-header">Informações pessoais</div>
+        <div class="card-body row">
+            <div class="col-md">
+                <div class="form-group col-md">
+                    <label>@Html.DisplayNameFor(model => model.CliCpf)</label>
+                    <input disabled class="form-control" value="@Html.DisplayFor(model => model.CliCpf)" />
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-group col-md">
+                    <label>@Html.DisplayNameFor(model => model.CliNome)</label>
+                    <input disabled class="form-control" value="@Html.DisplayFor(model => model.CliNome)" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="card">
+        <div class="card-header">Endereço</div>
+        <div class="card-body row">
+            <div class="col-md">
+                <div class="form-group col-md">
+                    <label>@Html.DisplayNameFor(model => model.CliCidade)</label>
+                    <input disabled class="form-control" value="@Html.DisplayFor(model => model.CliCidade)" />
+                </div>
+                <div class="form-group col-md">
+                    <label>@Html.DisplayNameFor(model => model.CliBairro)</label>
+                    <input disabled class="form-control" value="@Html.DisplayFor(model => model.CliBairro)" />
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-group col-md">
+                    <label>@Html.DisplayNameFor(model => model.CliEndereco)</label>
+                    <input disabled class="form-control" value="@Html.DisplayFor(model => model.CliEndereco)" />
+                </div>
+                <div class="form-group col-md">
+                    <label>@Html.DisplayNameFor(model => model.CliNumero)</label>
+                    <input disabled class="form-control" value="@Html.DisplayFor(model => model.CliNumero)" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="card">
+        <div class="card-header">Contato</div>
+        <div class="card-body row">
+            <div class="col-md">
+                <div class="form-group col-md">
+                    <label>@Html.DisplayNameFor(model => model.CliTelefoneCelular)</label>
+                    <input disabled class="form-control" value="@Html.DisplayFor(model => model.CliTelefoneCelular)" />
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="form-group col-md">
+                    <label>@Html.DisplayNameFor(model => model.CliTelefoneFixo)</label>
+                    <input disabled class="form-control" value="@Html.DisplayFor(model => model.CliTelefoneFixo)" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

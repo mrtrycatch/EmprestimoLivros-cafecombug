@@ -1,0 +1,237 @@
+﻿@model EmprestimoLivros.WEB.Models.EmprestimoViewModel
+
+<h4>Alterar Empréstimo</h4>
+<p>
+    <a class="btn btn-primary" asp-action="Index"> <i class="fa fa-arrow-left"></i> Voltar</a>
+</p>
+<hr />
+<div class="row">
+    <div class="col-md">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="col-md-4 p-0">
+                <div class="card">
+                    <div class="card-header">Livro devolvido</div>
+                    <div class="card-body col-md">
+                        <div class="form-check">
+                            <input asp-for="oLivroClienteEmprestimo.LceEntregue" class="form-check-input" type="checkbox" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Devolvido
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+
+            <div hidden class="form-group">
+                <input asp-for="oLivroClienteEmprestimo.Id" class="form-control" />
+            </div>
+
+            <div hidden class="form-group">
+                <input id="idCliente" asp-for="oLivroClienteEmprestimo.LceIdCliente" class="form-control" />
+            </div>
+
+            <div hidden class="form-group">
+                <input id="idLivro" asp-for="oLivroClienteEmprestimo.LceIdLivro" class="form-control" />
+            </div>
+
+            <div class="card">
+                <div class="card-header">Cliente</div>
+                <div class="card-body">
+                    <table id="listClienteTable" class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.oCliente.Id)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.oCliente.CliCpf)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.oCliente.CliNome)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.oCliente.CliTelefoneCelular)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.oCliente.CliTelefoneFixo)
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.oListCliente)
+                            {
+                                <tr onclick="passIdCliente('@item.Id')">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CliCpf)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CliNome)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CliTelefoneCelular)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CliTelefoneFixo)
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br />
+            <div class="card">
+                <div class="card-header">Livros</div>
+                <div class="card-body">
+                    <table id="listLivroTable" class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.oLivro.Id)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.oLivro.LivroNome)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.oLivro.LivroAutor)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.oLivro.LivroEditora)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.oLivro.LivroAnoPublicacao)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.oLivro.LivroEdicao)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.oListLivro)
+                            {
+                                <tr onclick="passIdLivro('@item.Id')">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LivroNome)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LivroAutor)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LivroEditora)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LivroAnoPublicacao.Year)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LivroEdicao)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br />
+            <div class="card">
+                <div class="card-header">Datas</div>
+                <div class="card-body row">
+                    <div class="col-md">
+                        <div class="form-group">
+                            <label asp-for="oLivroClienteEmprestimo.LceDataEmprestimo" class="control-label"></label>
+                            <input readonly="readonly" asp-for="oLivroClienteEmprestimo.LceDataEmprestimo" class="form-control" />
+                            <span asp-validation-for="oLivroClienteEmprestimo.LceDataEmprestimo" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md">
+                        <div class="form-group">
+                            <label asp-for="oLivroClienteEmprestimo.LceDataEntrega" class="control-label"></label>
+                            <input asp-for="oLivroClienteEmprestimo.LceDataEntrega" class="form-control" />
+                            <span asp-validation-for="oLivroClienteEmprestimo.LceDataEntrega" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <br />
+
+            <div class="form-group">
+                <input type="submit" value="Alterar" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            var listClienteTable =  $('#listClienteTable').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                }
+            });
+
+            var listLivroTable =  $('#listLivroTable').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                }
+            });
+
+
+            //Tabela Cliente
+
+            $('#listClienteTable tbody').on('click', 'tr', function () {
+
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                }
+                else {
+                    listClienteTable.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+
+                }
+            });
+
+            $('#listClienteTable tbody tr td').filter(":contains('" + @Model.oLivroClienteEmprestimo.LceIdCliente +"')")[0].parentElement.setAttribute('class', 'selected');
+
+
+
+            // Tabela Livro
+
+            $('#listLivroTable tbody').on('click', 'tr', function () {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                }
+                else {
+                    listLivroTable.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            });
+
+            $('#listLivroTable tbody tr td').filter(":contains('" + @Model.oLivroClienteEmprestimo.LceIdLivro +"')")[0].parentElement.setAttribute('class', 'selected');
+        });
+
+
+        function passIdCliente(idCliente) {
+            document.getElementById('idCliente').value = idCliente;
+        }
+
+        function passIdLivro(idLivro) {
+            document.getElementById('idLivro').value = idLivro;
+        }
+
+    </script>
+}

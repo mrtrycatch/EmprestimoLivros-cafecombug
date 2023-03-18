@@ -1,0 +1,54 @@
+﻿{
+   "CodeGenerationMode": 0,
+   "ContextClassName": "ControleemprestimolivroContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "ProjectRootNamespace": "EmprestimoLivros.DATA",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[Cliente]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Livro]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Livro_Cliente_Emprestimo]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[VW_Livro_Cliente_Emprestimo]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[dbo].[SP_SelecionarTodosByClienteID]",
+         "ObjectType": 1
+      }
+   ],
+   "UiHint": ".\\SQLEXPRESS.ControleEmprestimoLivro",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false,
+   "ConnectionString":  "!"
+}

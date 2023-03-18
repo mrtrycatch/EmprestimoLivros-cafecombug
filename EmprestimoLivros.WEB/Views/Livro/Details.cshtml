@@ -1,0 +1,53 @@
+﻿@model EmprestimoLivros.DATA.Models.Livro
+
+<div>
+    <h4>Detalhes do livro</h4>
+    <hr />
+    <div>
+        <a class="btn btn-success" asp-action="Edit" asp-route-id="@Model.Id"> <i class="fa fa-edit"></i> Alterar</a>
+        <a class="btn btn-primary" asp-action="Index"> <i class="fa fa-arrow-alt-circle-left"></i> Voltar</a>
+    </div>
+    <br />
+    <div class="card">
+        <div class="card-header">Informações do livro</div>
+        <div class="card-body">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="form-group col-md">
+                    <label asp-for="LivroNome" class="control-label"></label>
+                    <input readonly="readonly" asp-for="LivroNome" class="form-control" />
+                    <span asp-validation-for="LivroNome" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md">
+                    <label asp-for="LivroAutor" class="control-label"></label>
+                    <input readonly="readonly" asp-for="LivroAutor" class="form-control" />
+                    <span asp-validation-for="LivroAutor" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md">
+                    <label asp-for="LivroEditora" class="control-label"></label>
+                    <input readonly="readonly" asp-for="LivroEditora" class="form-control" />
+                    <span asp-validation-for="LivroEditora" class="text-danger"></span>
+                </div>
+                <div hidden class="form-group col-md">
+                    <label asp-for="LivroAnoPublicacao" class="control-label"></label>
+                    <input readonly="readonly" id="anoPublicacaoAsp" asp-for="LivroAnoPublicacao" class="form-control" />
+                    <span asp-validation-for="LivroAnoPublicacao" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="control-label">Ano de publicação</label>
+                    <input id="anoPublicacao" readonly="readonly" value="@ViewBag.anoPublicacao" class="form-control" />
+                    <span asp-validation-for="LivroAnoPublicacao" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label asp-for="LivroEdicao" class="control-label"></label>
+                    <input readonly="readonly" asp-for="LivroEdicao" class="form-control" />
+                    <span asp-validation-for="LivroEdicao" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

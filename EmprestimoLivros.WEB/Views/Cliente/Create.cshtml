@@ -1,0 +1,94 @@
+﻿@model EmprestimoLivros.DATA.Models.Cliente
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Novo cliente</h1>
+
+<h4>Preencha os campos abaixo</h4>
+<hr />
+<div>
+    <a class="btn btn-primary" asp-action="Index"> <i class="fa fa-arrow-circle-left"></i> Voltar</a>
+</div>
+<br />
+<div class="row">
+    <div class="col-md">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="card">
+                <div class="card-header">Informações pessoais</div>
+                <div class="card-body row">
+                    <div class="form-group col-md">
+                        <label asp-for="CliCpf" class="control-label"></label>
+                        <input asp-for="CliCpf" class="form-control" />
+                        <span asp-validation-for="CliCpf" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md">
+                        <label asp-for="CliNome" class="control-label"></label>
+                        <input asp-for="CliNome" class="form-control" />
+                        <span asp-validation-for="CliNome" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="card">
+                <div class="card-header">Endereço</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-md">
+                            <label asp-for="CliEndereco" class="control-label"></label>
+                            <input asp-for="CliEndereco" class="form-control" />
+                            <span asp-validation-for="CliEndereco" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md">
+                            <label asp-for="CliCidade" class="control-label"></label>
+                            <input asp-for="CliCidade" class="form-control" />
+                            <span asp-validation-for="CliCidade" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md">
+                            <label asp-for="CliBairro" class="control-label"></label>
+                            <input asp-for="CliBairro" class="form-control" />
+                            <span asp-validation-for="CliBairro" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md">
+                            <label asp-for="CliNumero" class="control-label"></label>
+                            <input asp-for="CliNumero" class="form-control" />
+                            <span asp-validation-for="CliNumero" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="card">
+                <div class="card-header">Contato</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-md">
+                            <label asp-for="CliTelefoneCelular" class="control-label"></label>
+                            <input asp-for="CliTelefoneCelular" class="form-control" />
+                            <span asp-validation-for="CliTelefoneCelular" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md">
+                            <label asp-for="CliTelefoneFixo" class="control-label"></label>
+                            <input asp-for="CliTelefoneFixo" class="form-control" />
+                            <span asp-validation-for="CliTelefoneFixo" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Incluir" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

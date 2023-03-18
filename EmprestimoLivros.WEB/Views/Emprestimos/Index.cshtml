@@ -1,0 +1,123 @@
+﻿@model IEnumerable<EmprestimoLivros.DATA.Models.VwLivroClienteEmprestimo>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create"> <i class="fa fa-plus-circle"></i> Novo empréstimo</a>
+</p>
+<table id="myTable" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CliCpf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CliNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LivroNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LceDataEmprestimo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LceDataEntrega)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LceEntregue)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CliCpf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CliNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LivroNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LceDataEmprestimo)
+            </td>
+            @{
+                var styleStatus = "text-white bg-success";
+
+                if (item.LceEntregue == true)
+                {
+                    styleStatus = "";
+                }
+                else
+                {
+                    if (DateTime.Now.Date > item.LceDataEntrega.Date)
+                    {
+                        styleStatus = "text-white bg-danger";
+                    }
+                    else if (DateTime.Now.Date.Equals(item.LceDataEntrega.Date))
+                    {
+                        styleStatus = "bg-warning";
+                    }
+                }
+
+
+
+            }
+            <td class="@styleStatus">
+
+                @Html.DisplayFor(modelItem => item.LceDataEntrega)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LceEntregue)
+            </td>
+            <td class="row">
+                <a asp-action="Edit" class="btn btn-primary mr-1" asp-route-id="@item.Id"><i class="fa fa-edit"></i></a>
+                <a asp-action="Details" class="btn btn-success mr-1" asp-route-id="@item.Id"><i class="fa fa-search"></i></a>
+
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-danger mr-1" data-toggle="modal" data-target="#DeleteModal-@item.Id">
+                    <i class="fa fa-trash"></i>
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="DeleteModal-@item.Id" tabindex="-1" role="dialog" aria-labelledby="DeleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="DeleteModalLabel">Excluir cliente</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Deseja realmente excluir o cliente @item.CliNome ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                                <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id">Sim</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
+                }
+            });
+        });
+    </script>
+}
